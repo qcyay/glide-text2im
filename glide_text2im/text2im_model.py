@@ -209,6 +209,7 @@ class Text2ImUNet(UNetModel):
         if self.xf_width:
             # 获取文本嵌入
             text_outputs = self.get_text_emb(tokens, mask)
+            # xf_proj,尺寸为[B,C],xf_out,尺寸为[B,C,N]
             xf_proj, xf_out = text_outputs["xf_proj"], text_outputs["xf_out"]
             # 将文本条件融合到时间步嵌入中
             # xf_proj: [batch, model_channels*4] -> 与时间嵌入相加
